@@ -7,22 +7,18 @@
 
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+      $myfirstname = mysqli_real_escape_string($db,$_POST['firstname']);
+      $mymiddlename = mysqli_real_escape_string($db,$_POST['middlename']);
+      $mylastname = mysqli_real_escape_string($db,$_POST['lastname']);
 
-      $sql = "SELECT * FROM userprofile WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-
-      $count = mysqli_num_rows($result);
-
-      // If result matched $myusername and $mypassword, table row must be 1 row
-
-      if($count == 1) {
-         $_SESSION['login_user'] = $myusername;
-
-         header("location: welcome.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
+      $sql = "INSERT INTO userprofile (username, password, firstname, middlename, lastname) VALUES ('$myusername', '$mypassword', '$myfirstname', '$mymiddlename', '$mylastname')";
+      if(mysqli_query($db,$sql) == TRUE)
+      {
+        $_SESSION['login_user'] = $myusername;
+        header("location: welcome.php");
+      }
+      else {
+         $error = "USERNAME TAKEN xD ";
       }
    }
 ?>
@@ -59,6 +55,9 @@
                <form action = "" method = "post">
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <label>FirstName  :</label><input type = "text" name = "firstname" class = "box"/><br /><br />
+                  <label>MiddleName  :</label><input type = "text" name = "middlename" class = "box"/><br /><br />
+                  <label>LastName  :</label><input type = "text" name = "lastname" class = "box"/><br /><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
 
