@@ -18,6 +18,7 @@
       // If result matched $myusername and $mypassword, table row must be 1 row
 
       if($count == 1) {
+         // session_register("myusername");
          $_SESSION['login_user'] = $myusername;
 
          header("location: welcome.php");
@@ -39,10 +40,12 @@
          label {
             font-weight:bold;
             width:100px;
-            font-size:14px;
+            font-size:20px;
          }
          .box {
-            border:#666666 solid 1px;
+            border: 0px solid #000000;
+            border-bottom-width: 1px;
+            background-color: transparent;
          }
       </style>
 
@@ -57,8 +60,8 @@
             <div style = "margin:30px">
 
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <input type = "text" name = "username" placeholder ="username" class = "box"/><br /><br />
+                  <input type = "password" name = "password" placeholder="password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
 
@@ -72,3 +75,4 @@
 
    </body>
 </html>
+
