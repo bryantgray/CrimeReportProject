@@ -24,7 +24,7 @@ if (!$db_selected) {
 
 $query = "SELECT * FROM crimes WHERE 1";
 $result = mysqli_query($db,$query);
-if (!$result) {
+if (!$result) { 
   die('Invalid query: ' . mysqli_error());
 }
 
@@ -45,5 +45,6 @@ while ($row = @mysqli_fetch_assoc($result)){
 }
 
 echo $dom->saveXML();
+
 
 ?>

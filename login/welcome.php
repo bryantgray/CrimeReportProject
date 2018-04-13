@@ -1,17 +1,21 @@
 <?php
    include('session.php');
 ?>
-<html">
+
+<html>
 
    <head>
       <title>Welcome</title>
    </head>
 
    <body>
-      <h1>Welcome <?php echo $login_session; ?></h1>
-      <h2><a href = "logout.php">Sign Out</a></h2>
-      <h2><a href = "EditAccount.php">Edit Account</a></h2>
-      <h2><a href = "map.php">Map</a></h2>
+      
+         <h1>Welcome <?php echo $login_session; ?></h1>
+      <div class='tab'>
+         <h3><a href = "map.php">Map</a></h3>
+         <h3><a href = "EditAccount.php">Edit account</a></h3>
+         <h3><a href = "logout.php">Sign Out</a></h3>
+      </div>
    </body>
 </html>
 

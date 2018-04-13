@@ -70,7 +70,8 @@
             </div>
 
          </div>
-
+         
+         <p><a href = "Register.php">Create an account</a></p>
       </div>
 
    </body>
