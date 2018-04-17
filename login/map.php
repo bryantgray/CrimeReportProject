@@ -1,16 +1,10 @@
-<html">
+<html>
 
    <head>
       <title>Map</title>
    </head>
 
    <body>
-      <h1>Map</h1>
-      <h2><a href = "welcome.php">Home</a></h2>
-      <h2><a href = "logout.php">Sign Out</a></h2>
-      <h2><a href = "EditAccount.php">Edit Account</a></h2>
-
-
 	   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -19,12 +13,12 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 97%;
       }
       /* Optional: Makes the page fill the window. */
       html, body {
         height: 100%;
-        margin: 20;
+        margin: 0;
         padding: 0;
       }
     </style>
@@ -33,38 +27,17 @@
   <body>
 
     <div id="floating-panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input id="submit" type="button" value="Search Location">
+      <input id="address" type="textbox" placeholder="Enter Location">
+      <input id="submit" type="button" value="Search">
     </div>
 
     <div id="map"></div>
 
-    <div id='table'>
-      <table>
-        <tr>
-          <th>Type</th>
-          <th>Number of crimes</th>
-        </tr>
-        <tr>
-          <td id='burglary'>Burglary</td><td align="center" id='numBurglary'></td>
-        </tr>
-        <tr>
-          <td id='shooting'>Shooting</td><td align="center" id='numShooting'></td>
-        </tr>
-        <tr>
-          <td id='stabbing'>Stabbing</td><td align="center" id='numStabbing'></td>
-        </tr>
-        <tr>
-          <td id='mugging'>Mugging</td><td align="center" id='numMugging'></td>
-      </table>
-    </div>
-
     <div id="form">
       <table>
-      <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='Burglary' SELECTED>Burglary</option>
-                 <option value='Shooting'>Shooting</option>
-                 <option value='Stabbing'>Stabbing</option>
+      <tr><td>Type:</td> <td><select id='type'> + 
+                 <option value='Assault' SELECTED>Assault</option>
+                 <option value='Burglary'>Burglary</option>
                  <option value='Mugging'>Mugging</option>
                  </select> </td></tr>
                  <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
@@ -123,8 +96,6 @@
         downloadUrl('get_crimes.php', function(data) {
           var xml = data.responseXML;
           var markers = xml.documentElement.getElementsByTagName('marker');
-
-          countTypes(xml);
 
           Array.prototype.forEach.call(markers, function(markerElem) {
             var id = markerElem.getAttribute('id');
@@ -240,37 +211,6 @@
 
         function doNothing () {
         }     
-
-        function countTypes(xml) {
-          var markers = xml.getElementsByTagName('marker');
-          var numMarkers = markers.length;
-          var burglaryCount = 0;
-          var shootingCount = 0;
-          var stabbingCount = 0;
-          var muggingCount = 0;
-
-          console.log("Markers: " + numMarkers);
-
-          for (var i = 0; i < numMarkers; i++) {
-            if (markers[i].getAttribute('type') == 'Burglary') {
-              burglaryCount++;
-            }
-            if (markers[i].getAttribute('type') == 'Shooting') {
-              shootingCount++;
-            }
-            if (markers[i].getAttribute('type') == 'Stabbing') {
-              stabbingCount++;
-            }
-            if (markers[i].getAttribute('type') == 'Mugging') {
-              muggingCount++;
-            }
-          }
-
-          document.getElementById('numBurglary').innerHTML = burglaryCount;
-          document.getElementById('numShooting').innerHTML = shootingCount;
-          document.getElementById('numStabbing').innerHTML = stabbingCount;
-          document.getElementById('numMugging').innerHTML = muggingCount;
-        }
     
     </script>
     

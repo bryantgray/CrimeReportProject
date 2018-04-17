@@ -50,11 +50,10 @@
             <div style = "margin:30px">
 
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <label>FirstName  :</label><input type = "text" name = "firstname" class = "box"/><br /><br />
-                  <label>MiddleName  :</label><input type = "text" name = "middlename" class = "box"/><br /><br />
-                  <label>LastName  :</label><input type = "text" name = "lastname" class = "box"/><br /><br />
+                  <label>UserName:  </label><input type = "text" name = "username" class = "box"/><br /><br />
+                  <label>Password:  </label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <label>FirstName:  </label><input type = "text" name = "firstname" class = "box"/><br /><br />
+                  <label>LastName:  </label><input type = "text" name = "lastname" class = "box"/><br /><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
 
