@@ -62,6 +62,7 @@
             </div>
 
          </div>
+         <a href = "Login.php">Log in</a>
 
       </div>
 
