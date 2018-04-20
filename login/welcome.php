@@ -105,7 +105,8 @@
       
 
    countTypes();
-
+  
+   // Sets table to display crimes
    function countTypes() {
           
       downloadUrl('get_crimes.php', function(data) {

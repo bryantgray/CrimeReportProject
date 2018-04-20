@@ -46,10 +46,6 @@
 
     <div id="message">Location saved</div>
 
-    
-    <!-- <div id="map"></div> -->
-
-    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLnVhMb29NSWC-1RMWqW_xI1Z-YBXmlUg&callback=initMap">
     </script>
@@ -68,6 +64,7 @@
           center: {lat: 28.538336, lng: -81.379234 }
         });
   
+        // create marker for placing a new crime
         marker = new google.maps.Marker({
           map: map,
           animation: google.maps.Animation.DROP,
@@ -92,7 +89,7 @@
           infowindow.open(map, marker);
         });
 
-        // Change this depending on the name of your PHP or XML file
+        // download XML file from the database and create marker to place on map
         downloadUrl('get_crimes.php', function(data) {
           var xml = data.responseXML;
           var markers = xml.documentElement.getElementsByTagName('marker');
@@ -114,12 +111,10 @@
 
             var text = document.createElement('text');
             text.textContent = date
-            infowincontent.appendChild(text);
-            // var icon = customLabel[type] || {};  
+            infowincontent.appendChild(text); 
               var marker1 = new google.maps.Marker({
                 map: map,
                 position: point,
-                // label: icon.label
               });
           
             var infowindow1 = new google.maps.InfoWindow();
@@ -173,7 +168,8 @@
             }
           });
         }
-
+        
+      // save new crime to database
       function saveData() {
           var type = document.getElementById("type").value;
           var latlng = marker.getPosition();
